@@ -126,6 +126,32 @@
         font: inherit;
       }
 
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1.5px solid var(--softline);
+        background: #fff;
+        font-size: 12px;
+        font-weight: 820;
+        letter-spacing: -0.01em;
+        color: #2f3136;
+      }
+
+      .chip.blue {
+        border-color: rgba(47, 85, 255, 0.35);
+        background: rgba(47, 85, 255, 0.06);
+        color: var(--text);
+      }
+
+      .chip.lime {
+        border-color: rgba(200, 240, 74, 0.55);
+        background: rgba(200, 240, 74, 0.25);
+        color: var(--text);
+      }
+
       .pill {
         display: inline-flex;
         align-items: center;
@@ -623,13 +649,25 @@
 
       .steps {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
         gap: 12px;
         margin-top: 20px;
+        position: relative;
+        padding-left: 0;
+      }
+
+      .steps::before {
+        content: "";
+        position: absolute;
+        left: 22px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background: var(--softline);
+        border-radius: 999px;
       }
 
       .step {
-        padding: 56px 18px 18px;
+        padding: 16px 18px 16px 60px;
         border-radius: 22px;
         border: 1.5px solid var(--softline);
         background: #fff;
@@ -645,24 +683,31 @@
       .step::before {
         content: "";
         position: absolute;
-        left: 18px;
-        right: 18px;
+        left: 14px;
         top: 18px;
-        height: 22px;
-        border-radius: 999px;
-        border: 1.5px solid rgba(42, 44, 49, 0.16);
-        background: #fff;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(42, 44, 49, 0.18);
+        background: var(--lime);
         transition: background 0.15s ease, border-color 0.15s ease;
       }
 
       .step:nth-child(odd)::before {
         background: var(--blue);
-        border-color: var(--blue);
+        border-color: rgba(47, 85, 255, 0.55);
       }
 
       .step:hover::before {
         background: var(--lime);
-        border-color: var(--line);
+        border-color: rgba(42, 44, 49, 0.35);
+      }
+
+      .techs {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
       .cta {
@@ -823,9 +868,6 @@
         .two,
         .three,
         .four {
-          grid-template-columns: 1fr;
-        }
-        .steps {
           grid-template-columns: 1fr;
         }
         .kpi-grid {
@@ -1314,11 +1356,51 @@
           <span class="pill">Roadmap</span>
           <h3 style="margin-top: 16px">Vom Workshop zum Pilot (klar, kurz, messbar)</h3>
           <div class="steps">
-            <div class="step"><strong>Audit</strong><p class="muted">Ist‑Zustand, Funnel, Assets, Rollen.</p></div>
-            <div class="step"><strong>Priorisieren</strong><p class="muted">Top‑1 Pain mit Business‑Impact.</p></div>
-            <div class="step"><strong>Konzept</strong><p class="muted">Story, Creatives, Landingpage.</p></div>
-            <div class="step"><strong>Live‑Test</strong><p class="muted">Pilot mit KPIs & Lernloop.</p></div>
-            <div class="step"><strong>Scale</strong><p class="muted">Wiederholbares Setup für Rollen.</p></div>
+            <div class="step">
+              <strong>1) Audit</strong>
+              <p class="muted" style="margin-top: 6px; line-height: 1.55">Ist‑Zustand, Funnel, Assets, Rollen – kurz und ehrlich.</p>
+              <div class="techs" aria-label="Techniken">
+                <span class="chip lime">Journey Mapping</span>
+                <span class="chip">Touchpoint-Check</span>
+                <span class="chip blue">Bottleneck Analyse</span>
+              </div>
+            </div>
+            <div class="step">
+              <strong>2) Priorisieren</strong>
+              <p class="muted" style="margin-top: 6px; line-height: 1.55">Top‑1 Pain nach Impact, Aufwand und Umsetzbarkeit festlegen.</p>
+              <div class="techs" aria-label="Techniken">
+                <span class="chip blue">Impact/Effort</span>
+                <span class="chip">5‑Whys</span>
+                <span class="chip lime">Rollen‑Scorecard</span>
+              </div>
+            </div>
+            <div class="step">
+              <strong>3) Konzept</strong>
+              <p class="muted" style="margin-top: 6px; line-height: 1.55">Employer Story, Creatives und Landingpage‑Struktur – passend zur Brand.</p>
+              <div class="techs" aria-label="Techniken">
+                <span class="chip">Message House</span>
+                <span class="chip lime">Proof‑Stories</span>
+                <span class="chip blue">Value Proposition</span>
+              </div>
+            </div>
+            <div class="step">
+              <strong>4) Live‑Test</strong>
+              <p class="muted" style="margin-top: 6px; line-height: 1.55">Pilot mit KPI‑Set und Lernloop – messen, iterieren, verbessern.</p>
+              <div class="techs" aria-label="Techniken">
+                <span class="chip blue">Experiment Design</span>
+                <span class="chip">A/B‑Tests</span>
+                <span class="chip lime">SLA + Next Steps</span>
+              </div>
+            </div>
+            <div class="step">
+              <strong>5) Scale</strong>
+              <p class="muted" style="margin-top: 6px; line-height: 1.55">Wiederholbares Setup für weitere Rollen/Standorte – mit Templates.</p>
+              <div class="techs" aria-label="Techniken">
+                <span class="chip">Templates</span>
+                <span class="chip blue">Dashboarding</span>
+                <span class="chip lime">Playbook</span>
+              </div>
+            </div>
           </div>
         </article>
       </section>

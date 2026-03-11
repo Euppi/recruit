@@ -1,1495 +1,1345 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>re:cruit Workshop - Social Recruiting</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Recruit × AGÁTA – Discovery-first Workshop Pitch: vom Ist-Zustand über Pain-Priorisierung zum messbaren Pilot."
+    />
+    <title>Recruit × AGÁTA — Workshop Pitch (Kundenversion)</title>
     <style>
+      :root {
+        --bg: #ececeb;
+        --panel: #f7f6f4;
+        --text: #151618;
+        --muted: #6a6c70;
+        --line: #2a2c31;
+        --lime: #c8f04a;
+        --blue: #2f55ff;
+        --white: #fff;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+        --radius: 30px;
+        --max: 1340px;
+        --ring: 0 0 0 4px rgba(47, 85, 255, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter,
+          Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      /* Top bar */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: rgba(236, 236, 235, 0.82);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(42, 44, 49, 0.1);
+      }
+
+      .nav-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        font-weight: 860;
+        letter-spacing: -0.03em;
+      }
+
+      .logo small {
+        display: block;
+        font-size: 12px;
+        font-weight: 650;
+        color: var(--muted);
+        letter-spacing: 0;
+      }
+
+      .quad {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 24px 0 0 var(--lime), 0 24px 0 var(--lime), 24px 24px 0 var(--lime);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .pill,
+      .chip,
+      button {
+        font: inherit;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1.5px solid var(--line);
+        background: #fff;
+        font-weight: 760;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+        user-select: none;
+      }
+
+      .pill:hover {
+        transform: translateY(-1px);
+      }
+
+      .pill:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: none;
+        box-shadow: var(--ring);
+      }
+
+      .pill.lime {
+        background: var(--lime);
+      }
+
+      .pill.blue {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+
+      .pill.is-active {
+        border-color: var(--blue);
+        box-shadow: 0 10px 24px rgba(47, 85, 255, 0.12);
+      }
+
+      .icon-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1.5px solid rgba(42, 44, 49, 0.18);
+        background: #fff;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      .icon-btn:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 44, 49, 0.35);
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+        padding: 0 24px 16px;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .mobile-menu .stack {
+        display: grid;
+        gap: 10px;
+      }
+
+      /* Cards & layout */
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        padding: 34px 0 20px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1.5px solid rgba(42, 44, 49, 0.16);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-main {
+        padding: 38px;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .hero-side {
+        padding: 30px;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: -0.055em;
+        line-height: 0.96;
+      }
+
+      h1 {
+        font-size: clamp(46px, 7.2vw, 96px);
+        max-width: 12ch;
+      }
+
+      h2 {
+        font-size: clamp(34px, 4vw, 56px);
+      }
+
+      h3 {
+        font-size: clamp(22px, 2vw, 30px);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .lead {
+        margin-top: 18px;
+        max-width: 66ch;
+        font-size: 19px;
+        color: #2f3136;
+        line-height: 1.5;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .blue {
+        color: var(--blue);
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .ghost {
+        padding: 16px 18px;
+        border: 1.5px solid rgba(42, 44, 49, 0.16);
+        border-radius: 22px;
+        background: #fff;
+        min-width: 190px;
+      }
+
+      .ghost strong {
+        display: block;
+        font-size: 28px;
+        letter-spacing: -0.05em;
+      }
+
+      .tiny {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 760;
+      }
+
+      .orbs {
+        pointer-events: none;
+      }
+
+      .orb-a,
+      .orb-b,
+      .orb-c {
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .orb-a {
+        right: -40px;
+        top: -36px;
+        width: 170px;
+        height: 170px;
+        background: radial-gradient(circle at 33% 33%, #fff 0 24%, transparent 25%), var(--lime);
+      }
+
+      .orb-b {
+        right: -40px;
+        bottom: -40px;
+        width: 160px;
+        height: 160px;
+        background: var(--blue);
+        opacity: 0.08;
+      }
+
+      .orb-c {
+        left: -50px;
+        top: -50px;
+        width: 130px;
+        height: 130px;
+        background: var(--lime);
+        opacity: 0.68;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+        margin: 28px 0;
+      }
+
+      .two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .four {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .section {
+        padding: 30px;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      /* Interactive blocks */
+      .agenda {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        border-radius: 22px;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        background: #fff;
+        overflow: hidden;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      details[open] {
+        border-color: rgba(47, 85, 255, 0.55);
+        box-shadow: 0 10px 24px rgba(47, 85, 255, 0.12);
+      }
+
+      details:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 44, 49, 0.28);
+      }
+
+      summary {
+        cursor: pointer;
+        list-style: none;
+        display: grid;
+        grid-template-columns: 56px 1fr auto;
+        align-items: center;
+        gap: 14px;
+        padding: 18px;
+        user-select: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .nr {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--blue);
+        letter-spacing: -0.04em;
+      }
+
+      .chev {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(42, 44, 49, 0.16);
+        background: #fff;
+        display: grid;
+        place-items: center;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      details[open] .chev {
+        transform: rotate(180deg);
+        border-color: rgba(47, 85, 255, 0.45);
+      }
+
+      .details-body {
+        padding: 0 18px 18px;
+        color: #2f3136;
+        line-height: 1.55;
+      }
+
+      .select-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .pain {
+        padding: 18px;
+        border-radius: 22px;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        background: #fff;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      }
+
+      .pain:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 44, 49, 0.28);
+      }
+
+      .pain[aria-selected="true"] {
+        background: linear-gradient(135deg, #fff, #eef1ff);
+        border-color: rgba(47, 85, 255, 0.7);
+        box-shadow: 0 10px 24px rgba(47, 85, 255, 0.12);
+      }
+
+      .pain strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+      }
+
+      .panel {
+        margin-top: 12px;
+        padding: 18px;
+        border-radius: 22px;
+        border: 1.5px dashed rgba(42, 44, 49, 0.2);
+        background: #fff;
+      }
+
+      .panel strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .service {
+        min-height: 220px;
+        padding: 18px;
+        border-radius: 22px;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 12px;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      .service:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 44, 49, 0.28);
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 860;
+        border: 1.5px solid var(--line);
+        width: max-content;
+      }
+
+      .tag.lime {
+        background: var(--lime);
+      }
+
+      .tag.blue {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
+      }
+
+      .metric {
+        padding: 18px;
+        border-radius: 22px;
+        background: #fff;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+      }
+
+      .metric .n {
+        font-size: 40px;
+        font-weight: 920;
+        letter-spacing: -0.06em;
+        color: var(--blue);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .step {
+        padding: 56px 18px 18px;
+        border-radius: 22px;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        background: #fff;
+        position: relative;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      .step:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 44, 49, 0.28);
+      }
+
+      .step::before {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        top: 18px;
+        height: 22px;
+        border-radius: 999px;
+        border: 1.5px solid rgba(42, 44, 49, 0.16);
+        background: #fff;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+
+      .step:nth-child(odd)::before {
+        background: var(--blue);
+        border-color: var(--blue);
+      }
+
+      .step:hover::before {
+        background: var(--lime);
+        border-color: var(--line);
+      }
+
+      .cta {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 24px;
+        padding: 36px;
+      }
+
+      .proof {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        border-radius: 22px;
+        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        background: #fff;
+      }
+
+      .actions {
+        margin-top: 18px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .btn {
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        background: var(--blue);
+        color: #fff;
+        border: 1.5px solid var(--blue);
+      }
+
+      .btn.secondary {
+        background: #fff;
+        color: var(--text);
+        border: 1.5px solid rgba(42, 44, 49, 0.35);
+      }
+
+      .btn.primary:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn.secondary:hover {
+        transform: translateY(-1px);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      .footer {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 10px 0 40px;
+        line-height: 1.55;
+      }
+
+      /* Floating controls */
+      .toggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 40;
+      }
+
+      .fab {
+        border: none;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+
+      .fab.primary {
+        background: var(--blue);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .fab.secondary {
+        background: var(--lime);
+        color: var(--text);
+        font-size: 16px;
+        font-weight: 900;
+      }
+
+      /* Dark mode */
+      body.dark {
+        --bg: #131416;
+        --panel: #1c1e22;
+        --text: #f2f2f0;
+        --muted: #b6bac2;
+        --line: #eceef4;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+        --ring: 0 0 0 4px rgba(200, 240, 74, 0.18);
+      }
+
+      body.dark .pill,
+      body.dark .icon-btn,
+      body.dark details,
+      body.dark .pain,
+      body.dark .service,
+      body.dark .step,
+      body.dark .metric,
+      body.dark .panel,
+      body.dark .proof,
+      body.dark .ghost,
+      body.dark .chev {
+        background: #22252a;
+      }
+
+      body.dark .lead,
+      body.dark .details-body {
+        color: rgba(242, 242, 240, 0.9);
+      }
+
+      body.dark .nav {
+        background: rgba(19, 20, 22, 0.72);
+        border-bottom-color: rgba(236, 238, 244, 0.12);
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+          transition: none !important;
+          animation: none !important;
         }
+      }
 
-        :root {
-            --primary-cyan: #00d4ff;
-            --dark-text: #1a1a2e;
-            --medium-text: #4a4a5e;
-            --light-bg: #f8f9fa;
-            --accent-pink: #ff006e;
-            --success-green: #06ffa5;
-            --purple: #667eea;
-            --orange: #ff6b35;
+      /* Responsive */
+      @media (max-width: 1100px) {
+        .hero,
+        .cta,
+        .two,
+        .three,
+        .four {
+          grid-template-columns: 1fr;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: white;
-            color: var(--dark-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-radius: 30px;
-            margin-bottom: 60px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero .tagline {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: white;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            color: white;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background: var(--accent-pink);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.3em;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(255, 0, 110, 0.4);
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(255, 0, 110, 0.6);
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 50px 0;
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            z-index: 100;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .nav-tab {
-            padding: 15px 30px;
-            background: white;
-            border: 2px solid var(--primary-cyan);
-            border-radius: 30px;
-            color: var(--primary-cyan);
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            font-size: 1.05em;
-        }
-
-        .nav-tab:hover {
-            background: var(--primary-cyan);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
-        }
-
-        .nav-tab.active {
-            background: var(--accent-pink);
-            border-color: var(--accent-pink);
-            color: white;
-            box-shadow: 0 10px 25px rgba(255, 0, 110, 0.3);
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-card {
-            background: white;
-            border-radius: 25px;
-            padding: 50px;
-            margin: 40px 0;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
-        }
-
-        .section-title {
-            font-size: 2.8em;
-            margin-bottom: 35px;
-            color: var(--dark-text);
-            text-align: center;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-pink));
-            border-radius: 3px;
-        }
-
-        .subsection-title {
-            font-size: 2em;
-            margin: 40px 0 25px;
-            color: var(--purple);
-        }
-
-        /* Problem Cards */
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .problem-card {
-            background: linear-gradient(135deg, #fff5f7 0%, #ffe5eb 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border-left: 5px solid var(--accent-pink);
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(255, 0, 110, 0.2);
-        }
-
-        .problem-icon {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .problem-title {
-            font-size: 1.6em;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .problem-description {
-            color: var(--medium-text);
-            font-size: 1.05em;
-            line-height: 1.7;
-        }
-
-        /* Solution Cards */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .solution-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border-left: 5px solid var(--primary-cyan);
-            transition: all 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
-        }
-
-        .solution-icon {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .solution-title {
-            font-size: 1.6em;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .solution-description {
-            color: var(--medium-text);
-            font-size: 1.05em;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .solution-value {
-            color: var(--primary-cyan);
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 50px 0;
-            margin: 40px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--primary-cyan), var(--accent-pink), var(--success-green));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin: 50px 0;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            border: 2px solid var(--primary-cyan);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
-        }
-
-        .timeline-time {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-pink);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            white-space: nowrap;
-            font-size: 1.1em;
-            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.3);
-        }
-
-        .timeline-title {
-            font-size: 1.6em;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .timeline-description {
-            color: var(--medium-text);
-            line-height: 1.7;
-        }
-
-        .timeline-list {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .timeline-list li {
-            margin: 8px 0;
-            color: var(--medium-text);
-        }
-
-        /* Statistics */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, var(--purple), #764ba2);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.5);
-        }
-
-        .stat-number {
-            font-size: 3.5em;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .stat-label {
-            font-size: 1.1em;
-            color: white;
-            opacity: 0.95;
-        }
-
-        /* Package Cards */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            margin: 50px 0;
-        }
-
-        .package-card {
-            background: white;
-            padding: 45px;
-            border-radius: 25px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-            position: relative;
-        }
-
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(0, 212, 255, 0.3);
-            border-color: var(--primary-cyan);
-        }
-
-        .package-card.featured {
-            border-color: var(--accent-pink);
-            transform: scale(1.05);
-        }
-
-        .package-badge {
-            position: absolute;
-            top: -15px;
-            right: 30px;
-            background: var(--accent-pink);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
-        .package-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .package-name {
-            font-size: 2em;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .package-price {
-            font-size: 1.3em;
-            color: var(--medium-text);
-            margin-bottom: 25px;
-        }
-
-        .package-features {
-            list-style: none;
-            margin: 25px 0;
-        }
-
-        .package-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: var(--dark-text);
-        }
-
-        .package-features li:before {
-            content: "✓ ";
-            color: var(--success-green);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .package-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary-cyan), #0095ff);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .package-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
-
-        .package-card.featured .package-button {
-            background: linear-gradient(135deg, var(--accent-pink), #c4008c);
-        }
-
-        /* Highlight Boxes */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(196, 0, 140, 0.1));
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid var(--accent-pink);
-            margin: 40px 0;
-        }
-
-        .highlight-title {
-            font-size: 2em;
-            color: var(--accent-pink);
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .highlight-content {
-            font-size: 1.15em;
-            line-height: 1.8;
-            color: var(--dark-text);
-        }
-
-        .highlight-list {
-            margin-left: 25px;
-            margin-top: 15px;
-        }
-
-        .highlight-list li {
-            margin: 12px 0;
-            color: var(--dark-text);
-        }
-
-        /* QR Code Section */
-        .qr-section {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin: 50px 0;
-        }
-
-        .qr-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary-cyan);
-        }
-
-        .qr-card:hover {
-            transform: scale(1.08);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
-        }
-
-        .qr-title {
-            color: var(--dark-text);
-            font-weight: bold;
-            margin-top: 20px;
-            font-size: 1.3em;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin: 50px 0;
-        }
-
-        .action-btn {
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .action-btn-primary {
-            background: linear-gradient(135deg, var(--primary-cyan), #0095ff);
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .action-btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-        }
-
-        .action-btn-secondary {
-            background: linear-gradient(135deg, var(--success-green), #04d98b);
-            color: var(--dark-text);
-            box-shadow: 0 10px 30px rgba(6, 255, 165, 0.3);
-        }
-
-        .action-btn-secondary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(6, 255, 165, 0.5);
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 35px;
-            margin: 50px 0;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .team-member:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-        }
-
-        .team-name {
-            font-size: 1.4em;
-            color: var(--dark-text);
-            margin: 15px 0 8px;
-            font-weight: bold;
+        .steps {
+          grid-template-columns: 1fr;
         }
+      }
 
-        .team-role {
-            color: var(--medium-text);
-            font-size: 1em;
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
         }
-
-        /* Progress Indicator */
-        .progress-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-pink));
-            width: 0%;
-            transition: width 0.3s ease;
-            z-index: 9999;
-        }
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, var(--accent-pink), #c4008c);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .fab:hover {
-            transform: scale(1.15) rotate(90deg);
-            box-shadow: 0 20px 50px rgba(255, 0, 110, 0.6);
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 60px 40px;
-            text-align: center;
-            margin-top: 80px;
-            border-radius: 30px;
-        }
-
-        .footer-title {
-            font-size: 2.2em;
-            color: var(--dark-text);
-            margin-bottom: 25px;
-        }
-
-        .footer-subtitle {
-            font-size: 1.3em;
-            color: var(--medium-text);
-            margin-bottom: 30px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: var(--primary-cyan);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 1.1em;
+        .mobile-only {
+          display: grid;
         }
+      }
 
-        .footer-link:hover {
-            color: var(--accent-pink);
-            transform: scale(1.1);
+      @media (max-width: 780px) {
+        .shell,
+        .nav-inner,
+        .mobile-menu {
+          padding: 16px;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero .tagline {
-                font-size: 1.3em;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-            }
-
-            .timeline-content {
-                width: 100%;
-                margin-left: 40px;
-            }
-
-            .timeline-time {
-                left: 20px;
-                transform: translateX(0);
-            }
-
-            .nav-tabs {
-                position: relative;
-            }
-
-            .section-card {
-                padding: 30px 20px;
-            }
+        .hero-main,
+        .hero-side,
+        .section,
+        .cta {
+          padding: 22px;
         }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+        h1 {
+          font-size: 56px;
         }
-
-        .pulse {
-            animation: pulse 2s infinite;
+        .select-grid {
+          grid-template-columns: 1fr;
         }
+      }
     </style>
-</head>
-<body>
-    <!-- Progress Indicator -->
-    <div class="progress-indicator" id="progressBar"></div>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="quad" aria-hidden="true"></div>
+          <div>
+            Recruit × AGÁTA
+            <small>Kundenversion · Discovery-first Workshop Pitch</small>
+          </div>
+        </div>
 
-    <!-- Floating Action Button -->
-    <div class="fab" onclick="scrollToTop()" title="Zurück nach oben">↑</div>
+        <div class="nav-links" id="desktopNav">
+          <a class="pill" href="#story" data-spy="story">Story</a>
+          <a class="pill" href="#workshop" data-spy="workshop">Workshop</a>
+          <a class="pill" href="#pain" data-spy="pain">Pain Points</a>
+          <a class="pill" href="#offer" data-spy="offer">Angebot</a>
+          <a class="pill lime" href="#next" data-spy="next">Next Step</a>
+        </div>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="hero-content">
-                <h1>🚀 Social Recruiting leicht gemacht</h1>
-                <p class="tagline">Von 0 auf 100 in 4 Stunden</p>
-                <p class="subtitle">Der Workshop, der Ihr Recruiting revolutioniert – mit sofort umsetzbaren Quick Wins</p>
-                <a href="#kontakt" class="cta-button pulse">Jetzt Workshop buchen</a>
+        <button class="icon-btn mobile-only" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="sr-only">Menü öffnen</span>
+          ☰
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="stack" role="navigation" aria-label="Mobile Navigation">
+          <a class="pill" href="#story" data-spy="story">Story</a>
+          <a class="pill" href="#workshop" data-spy="workshop">Workshop</a>
+          <a class="pill" href="#pain" data-spy="pain">Pain Points</a>
+          <a class="pill" href="#offer" data-spy="offer">Angebot</a>
+          <a class="pill lime" href="#next" data-spy="next">Next Step</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="shell">
+      <section class="hero" id="story" aria-label="Story">
+        <article class="card hero-main">
+          <div class="orbs" aria-hidden="true">
+            <div class="orb-a"></div>
+          </div>
+
+          <div>
+            <span class="pill lime">Pitch-ready: Workshop statt Sales-Monolog</span>
+            <h1>Great coffee needs <span class="blue">great people.</span></h1>
+            <p class="lead">
+              Ein Setup für AGÁTA, das mit Verstehen startet: Wir klären Kontext, priorisieren den größten Hebel und
+              landen bei einem kleinen, messbaren Pilot. Visuell angelehnt an die Recruit × AGÁTA PDF: hell, minimal,
+              typostark, lime/blau und modular.
+            </p>
+
+            <div class="actions">
+              <a class="pill btn primary" href="#next">Sprint vorschlagen</a>
+              <a class="pill btn secondary" href="#offer">Bausteine ansehen</a>
             </div>
-        </div>
+          </div>
 
-        <!-- Navigation -->
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showSection('problem')">💼 Ihre Herausforderung</button>
-            <button class="nav-tab" onclick="showSection('loesung')">✨ Unsere Lösung</button>
-            <button class="nav-tab" onclick="showSection('agenda')">📅 Workshop-Ablauf</button>
-            <button class="nav-tab" onclick="showSection('pakete')">🎁 Unsere Pakete</button>
-            <button class="nav-tab" onclick="showSection('kontakt')">🤝 Kontakt</button>
-        </div>
-
-        <!-- Problem Section -->
-        <div id="problem" class="content-section active">
-            <div class="section-card">
-                <h2 class="section-title">Kennen Sie diese Recruiting-Herausforderungen?</h2>
-                <p style="text-align: center; font-size: 1.3em; color: var(--medium-text); margin-bottom: 40px;">
-                    Als Unternehmen stehen Sie vor besonderen Herausforderungen im Recruiting
-                </p>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">>50%</div>
-                        <div class="stat-label">der Personaler sehen Social-Media-Recruiting als wichtigsten Trend</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">41%</div>
-                        <div class="stat-label">der Unternehmen fehlt die Zeit für Employer Branding</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">35%</div>
-                        <div class="stat-label">mangelt es an Fachpersonal</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">73%</div>
-                        <div class="stat-label">der Gen-Z recherchiert Arbeitgeber auf Instagram</div>
-                    </div>
-                </div>
-
-                <h3 class="subsection-title" style="margin-top: 60px;">Typische Recruiting-Probleme:</h3>
-                
-                <div class="problems-grid">
-                    <div class="problem-card">
-                        <span class="problem-icon">😰</span>
-                        <h3 class="problem-title">Zu wenige Bewerbungen</h3>
-                        <p class="problem-description">Ihre Stellenanzeigen auf Jobbörsen bringen kaum Reaktionen. Die wenigen Bewerbungen, die kommen, passen nicht zum Profil.</p>
-                    </div>
-
-                    <div class="problem-card">
-                        <span class="problem-icon">⏰</span>
-                        <h3 class="problem-title">Keine Zeit für Marketing</h3>
-                        <p class="problem-description">Social Media, Employer Branding, Content-Erstellung – das klingt gut, aber wer soll das alles machen? Ihr HR-Team ist bereits überlastet.</p>
-                    </div>
-
-                    <div class="problem-card">
-                        <span class="problem-icon">❓</span>
-                        <h3 class="problem-title">Kein Know-how</h3>
-                        <p class="problem-description">"Wie funktioniert Instagram für Recruiting?" "Was ist eigentlich TikTok?" "Brauchen wir wirklich Social Media?" – Viele Fragen, keine Antworten.</p>
-                    </div>
-
-                    <div class="problem-card">
-                        <span class="problem-icon">💰</span>
-                        <h3 class="problem-title">Kleines Budget</h3>
-                        <p class="problem-description">Große Recruiting-Agenturen kosten ein Vermögen. Aber ohne professionelle Hilfe kommen Sie auch nicht weiter.</p>
-                    </div>
-
-                    <div class="problem-card">
-                        <span class="problem-icon">📉</span>
-                        <h3 class="problem-title">Unsichtbare Arbeitgebermarke</h3>
-                        <p class="problem-description">Ihre Konkurrenz ist auf allen Kanälen präsent. Sie? Nicht auffindbar. Wie sollen Kandidaten Sie überhaupt entdecken?</p>
-                    </div>
-
-                    <div class="problem-card">
-                        <span class="problem-icon">🔧</span>
-                        <h3 class="problem-title">Manuelle Prozesse</h3>
-                        <p class="problem-description">Bewerbungsbestätigungen per Hand verschicken, Excel-Listen pflegen, Termine manuell koordinieren – Recruiting frisst viel zu viel Zeit.</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box" style="margin-top: 60px;">
-                    <h3 class="highlight-title">💡 Die gute Nachricht:</h3>
-                    <div class="highlight-content">
-                        <p style="font-size: 1.2em;">Diese Probleme sind lösbar – und zwar schneller und günstiger als Sie denken!</p>
-                        <p style="margin-top: 15px;">In unserem 4-stündigen Workshop zeigen wir Ihnen, wie Sie mit minimalem Aufwand und kleinem Budget maximale Ergebnisse erzielen. <strong>Praxisnah, sofort umsetzbar, messbar.</strong></p>
-                    </div>
-                </div>
+          <div class="hero-badges">
+            <div class="ghost">
+              <span class="tiny">Workshop Ziel</span>
+              <strong>Hebel finden</strong>
+              <p class="muted">Wo fehlt Sichtbarkeit, Geschwindigkeit oder Fit – und was lohnt sich zuerst?</p>
             </div>
-        </div>
-
-        <!-- Lösung Section -->
-        <div id="loesung" class="content-section">
-            <div class="section-card">
-                <h2 class="section-title">Unsere Lösung: Recruiting, das wirklich funktioniert</h2>
-                <p style="text-align: center; font-size: 1.3em; color: var(--medium-text); margin-bottom: 40px;">
-                    Wir machen Social Recruiting einfach, effektiv und bezahlbar
-                </p>
-
-                <h3 class="subsection-title">Was Sie im Workshop lernen und direkt mitnehmen:</h3>
-
-                <div class="solutions-grid">
-                    <div class="solution-card">
-                        <span class="solution-icon">🎯</span>
-                        <h3 class="solution-title">Recruiting-Status-Check</h3>
-                        <p class="solution-description">Wir analysieren gemeinsam, wo Ihr Unternehmen steht und identifizieren konkrete Verbesserungspotenziale in 5 Bereichen.</p>
-                        <p class="solution-value">✅ Wissen, wo Sie ansetzen müssen</p>
-                    </div>
-
-                    <div class="solution-card">
-                        <span class="solution-icon">📱</span>
-                        <h3 class="solution-title">Social Media Strategie</h3>
-                        <p class="solution-description">Lernen Sie die 4 Säulen des erfolgreichen Social Recruitings kennen – von Zielgruppenverständnis bis Performance-Messung.</p>
-                        <p class="solution-value">✅ Klare Strategie statt Rätselraten</p>
-                    </div>
-
-                    <div class="solution-card">
-                        <span class="solution-icon">✍️</span>
-                        <h3 class="solution-title">Fertiger Social Media Post</h3>
-                        <p class="solution-description">Sie erstellen während des Workshops einen echten Instagram-Post für eine Ihrer offenen Stellen – mit KI-Unterstützung und unserem Feedback.</p>
-                        <p class="solution-value">✅ Sofort einsetzbare Inhalte</p>
-                    </div>
-
-                    <div class="solution-card">
-                        <span class="solution-icon">⚡</span>
-                        <h3 class="solution-title">10 Quick Wins</h3>
-                        <p class="solution-description">Konkrete Maßnahmen, die Sie noch heute starten können – ohne großes Budget, ohne Vorkenntnisse, aber mit messbarem Erfolg.</p>
-                        <p class="solution-value">✅ Erste Erfolge in Tagen, nicht Monaten</p>
-                    </div>
-
-                    <div class="solution-card">
-                        <span class="solution-icon">📅</span>
-                        <h3 class="solution-title">30-Tage-Action-Plan</h3>
-                        <p class="solution-description">Ihr persönlicher Fahrplan für die nächsten 4 Wochen mit konkreten Aufgaben, Verantwortlichen und Deadlines.</p>
-                        <p class="solution-value">✅ Wissen, was als nächstes zu tun ist</p>
-                    </div>
-
-                    <div class="solution-card">
-                        <span class="solution-icon">🤖</span>
-                        <h3 class="solution-title">KI-Tools kennenlernen</h3>
-                        <p class="solution-description">Live-Demo: So nutzen Sie ChatGPT, Canva und Automation-Tools für Ihr Recruiting – auch ohne technische Vorkenntnisse.</p>
-                        <p class="solution-value">✅ Zeit sparen mit moderner Technologie</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box" style="margin-top: 60px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(102, 126, 234, 0.1)); border-color: var(--primary-cyan);">
-                    <h3 class="highlight-title" style="color: var(--primary-cyan);">🎁 Ihr Mehrwert auf einen Blick:</h3>
-                    <ul class="highlight-list" style="font-size: 1.15em; line-height: 2;">
-                        <li><strong>Praxisnah:</strong> 60% Hands-On-Arbeit, nicht nur Theorie</li>
-                        <li><strong>Individuell:</strong> Wir arbeiten mit IHREN echten Stellenausschreibungen</li>
-                        <li><strong>Umsetzbar:</strong> Jeder Tipp ist sofort anwendbar – auch ohne große Ressourcen</li>
-                        <li><strong>Messbar:</strong> Sie lernen, welche KPIs wichtig sind und wie Sie diese tracken</li>
-                        <li><strong>Netzwerk:</strong> Austausch mit anderen HR-Verantwortlichen</li>
-                    </ul>
-                </div>
-
-                <h3 class="subsection-title" style="margin-top: 60px; text-align: center;">Warum re:cruit?</h3>
-
-                <div class="solutions-grid">
-                    <div class="solution-card" style="background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%); border-color: var(--success-green);">
-                        <span class="solution-icon">🏢</span>
-                        <h3 class="solution-title">Branchenerfahren</h3>
-                        <p class="solution-description">Wir verstehen die besonderen Herausforderungen von kleinen und mittelständischen Unternehmen – keine One-Size-Fits-All-Lösungen.</p>
-                    </div>
-
-                    <div class="solution-card" style="background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%); border-color: var(--success-green);">
-                        <span class="solution-icon">👥</span>
-                        <h3 class="solution-title">Junges Team mit frischen Ideen</h3>
-                        <p class="solution-description">Wir kennen Gen-Z, weil wir Gen-Z sind. Direkter Draht zur Zielgruppe und Verständnis für moderne Recruiting-Kanäle.</p>
-                    </div>
-
-                    <div class="solution-card" style="background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%); border-color: var(--success-green);">
-                        <span class="solution-icon">🚀</span>
-                        <h3 class="solution-title">Schnell umsetzbare Prototypen</h3>
-                        <p class="solution-description">Wir liefern keine 50-seitigen Konzepte, sondern funktionierende Lösungen mit messbarem Output.</p>
-                    </div>
-                </div>
+            <div class="ghost">
+              <span class="tiny">Pitch Haltung</span>
+              <strong>Insight & Klarheit</strong>
+              <p class="muted">Erst Realität & Ursachen, dann Lösung. Keine Folienflut.</p>
             </div>
-        </div>
-
-        <!-- Agenda Section -->
-        <div id="agenda" class="content-section">
-            <div class="section-card">
-                <h2 class="section-title">Workshop-Ablauf: Ihre 4 Stunden zur Recruiting-Revolution</h2>
-                <p style="text-align: center; font-size: 1.3em; color: var(--medium-text); margin-bottom: 20px;">
-                    <strong>Dauer:</strong> 09:00 - 13:00 Uhr (4 Stunden)<br>
-                    <strong>Gruppengröße:</strong> 8-15 Teilnehmer für optimale Betreuung
-                </p>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-time">09:00 - 09:30</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">☕ Warm-up & Erwartungsmanagement</h4>
-                            <p class="timeline-description"><strong>Ziel:</strong> Ankommen, Vertrauen aufbauen, Ihre Pain Points identifizieren</p>
-                            <ul class="timeline-list">
-                                <li><strong>Begrüßung:</strong> Das re:cruit-Team stellt sich vor</li>
-                                <li><strong>Ice-Breaker:</strong> "Recruiting-Reality-Check" – Ihre größte aktuelle Herausforderung</li>
-                                <li><strong>Live-Umfrage:</strong> Mentimeter-Umfrage zu offenen Stellen, Social Media Nutzung und Budget</li>
-                                <li><strong>Erwartungen:</strong> Was möchten Sie heute lernen?</li>
-                            </ul>
-                            <p style="margin-top: 10px; color: var(--primary-cyan);"><strong>Tool:</strong> Mentimeter für interaktive Word-Cloud</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">09:30 - 10:30</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">🔍 Status Quo & Die Recruiting-Realität</h4>
-                            <p class="timeline-description"><strong>Ziel:</strong> Bewusstsein schaffen für verpasste Chancen und moderne Trends</p>
-                            <ul class="timeline-list">
-                                <li><strong>Input (15 Min):</strong> "Warum klassisches Recruiting nicht mehr funktioniert"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Die Recruiting-Falle kleiner Unternehmen</li>
-                                        <li>Gen-Z ist auf Instagram/TikTok, nicht auf Stepstone</li>
-                                        <li>Erfolgreiche Recruiting-Kampagnen als Inspiration</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Workshop-Session (30 Min):</strong> "Wo steht Ihr Unternehmen?"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Gruppenarbeit: Recruiting-Maturity-Check</li>
-                                        <li>5 Kategorien bewerten: Employer Branding, Social Media, Candidate Journey, Digitalisierung, Messbarkeit</li>
-                                        <li>Netzdiagramm erstellen (Spider-Chart)</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Präsentation (15 Min):</strong> Jede Gruppe präsentiert Ergebnisse + Feedback vom re:cruit-Team</li>
-                            </ul>
-                            <p style="margin-top: 10px; color: var(--primary-cyan);"><strong>Tool:</strong> Miro Board oder Flipchart</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">10:30 - 10:45</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">☕ Kaffeepause</h4>
-                            <p class="timeline-description">Networking, informeller Austausch und Snacks</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">10:45 - 12:00</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">✨ Social Recruiting Strategie - Die Lösung</h4>
-                            <p class="timeline-description"><strong>Ziel:</strong> Konkrete Strategien und Best Practices lernen</p>
-                            <ul class="timeline-list">
-                                <li><strong>Input (30 Min):</strong> "Die 4 Säulen des erfolgreichen Social Recruitings"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Säule 1: Zielgruppen-Verständnis (Persona-Entwicklung)</li>
-                                        <li>Säule 2: Content-Strategie (80/20-Regel, Storytelling)</li>
-                                        <li>Säule 3: Kanäle & Formate (Instagram, LinkedIn, TikTok)</li>
-                                        <li>Säule 4: Performance & Optimierung (KPIs, A/B-Testing)</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Praxis-Session (45 Min):</strong> "Erstellen Sie Ihren ersten Social Media Post!"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Schritt 1: Persona für Ihre Stelle definieren (10 Min)</li>
-                                        <li>Schritt 2: Content mit KI erstellen – Live-Demo ChatGPT/Claude (20 Min)</li>
-                                        <li>Schritt 3: Peer-Review & Experten-Feedback (15 Min)</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <p style="margin-top: 10px; color: var(--success-green);"><strong>Output:</strong> Jeder hat einen fertigen, umsetzbaren Post!</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">12:00 - 12:45</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">⚡ Quick Wins & Action Plan</h4>
-                            <p class="timeline-description"><strong>Ziel:</strong> Sofort umsetzbare Maßnahmen definieren</p>
-                            <ul class="timeline-list">
-                                <li><strong>Input (15 Min):</strong> "10 Quick Wins, die Sie heute starten können"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Instagram Business Account erstellen (5 Min)</li>
-                                        <li>Google My Business optimieren (10 Min)</li>
-                                        <li>Mitarbeiter zu Markenbotschaftern machen</li>
-                                        <li>Bewerbungsprozess auf 3 Klicks reduzieren</li>
-                                        <li>+ 6 weitere sofort umsetzbare Tipps</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Workshop (25 Min):</strong> "Ihr 30-Tage-Sprint-Plan"
-                                    <ul style="margin-left: 20px; margin-top: 5px;">
-                                        <li>Individuelle Action Plans erstellen</li>
-                                        <li>3 konkrete Maßnahmen auswählen</li>
-                                        <li>Verantwortliche und Deadlines festlegen</li>
-                                        <li>Persönliche Beratung durch re:cruit-Coaches</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Commitment (5 Min):</strong> Jeder teilt EINE Sache, die in 7 Tagen umgesetzt wird</li>
-                            </ul>
-                            <p style="margin-top: 10px; color: var(--success-green);"><strong>Output:</strong> Personalisierter Action Plan mit konkreten Schritten!</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">12:45 - 13:00</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">🎉 Abschluss & Next Steps</h4>
-                            <p class="timeline-description"><strong>Recap & Feedback</strong></p>
-                            <ul class="timeline-list">
-                                <li>Zusammenfassung der wichtigsten Learnings</li>
-                                <li>Was nehmen Sie mit: Analyse, fertiger Post, Action Plan, Tools & Ressourcen</li>
-                                <li>Live-Feedback via Mentimeter</li>
-                                <li>Follow-up ankündigen: Email mit Materialien, LinkedIn-Gruppe, optionaler Follow-up Call nach 4 Wochen</li>
-                                <li>Abschlussfoto für Social Media 📸</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box" style="margin-top: 60px;">
-                    <h3 class="highlight-title">🎁 Das nehmen Sie mit nach Hause:</h3>
-                    <ul class="highlight-list" style="font-size: 1.15em; line-height: 2;">
-                        <li>✅ <strong>Recruiting-Status-Analyse</strong> Ihres Unternehmens</li>
-                        <li>✅ <strong>Fertiger Social Media Post</strong> für eine Ihrer Stellen</li>
-                        <li>✅ <strong>30-Tage-Action-Plan</strong> mit konkreten Aufgaben</li>
-                        <li>✅ <strong>Checkliste "10 Quick Wins"</strong> zum sofort starten</li>
-                        <li>✅ <strong>Tool-Liste & Ressourcen</strong> (ChatGPT-Prompts, Canva-Templates)</li>
-                        <li>✅ <strong>Netzwerk</strong> aus anderen HR-Verantwortlichen</li>
-                        <li>✅ <strong>Follow-up Support:</strong> Email mit allen Materialien + optionaler Strategie-Call</li>
-                    </ul>
-                </div>
+            <div class="ghost">
+              <span class="tiny">Output</span>
+              <strong>Plan + Pilot</strong>
+              <p class="muted">Quick Wins, KPI‑Set und ein nächster Schritt, der machbar ist.</p>
             </div>
-        </div>
+          </div>
+        </article>
 
-        <!-- Pakete Section -->
-        <div id="pakete" class="content-section">
-            <div class="section-card">
-                <h2 class="section-title">Unsere Pakete: Für jeden Bedarf die passende Lösung</h2>
-                <p style="text-align: center; font-size: 1.3em; color: var(--medium-text); margin-bottom: 40px;">
-                    Vom ersten Kennenlernen bis zur vollständigen Recruiting-Transformation
-                </p>
+        <aside class="card hero-side" aria-label="AGÁTA Snapshot">
+          <div class="orbs" aria-hidden="true">
+            <div class="orb-b"></div>
+            <div class="orb-c"></div>
+          </div>
 
-                <div class="packages-grid">
-                    <!-- Basic Package -->
-                    <div class="package-card">
-                        <span class="package-icon">💡</span>
-                        <h3 class="package-name">Basic</h3>
-                        <p class="package-price">Preis auf Anfrage</p>
-                        <ul class="package-features">
-                            <li>Recruiting-Status-Check & Kanalanalyse</li>
-                            <li>Social-Media-Potenziale identifizieren</li>
-                            <li>Umsetzung von Sofortmaßnahmen</li>
-                            <li>Individueller Aktionsplan</li>
-                            <li><strong>Workshop (2-3 Stunden)</strong></li>
-                        </ul>
-                        <a href="#kontakt" class="package-button">Anfrage senden</a>
-                    </div>
+          <span class="pill">AGÁTA Snapshot</span>
+          <h3>Warum das bei AGÁTA besonders gut passt</h3>
 
-                    <!-- Business Package -->
-                    <div class="package-card featured">
-                        <div class="package-badge">BELIEBT</div>
-                        <span class="package-icon">💼</span>
-                        <h3 class="package-name">Business</h3>
-                        <p class="package-price">Preis auf Anfrage</p>
-                        <ul class="package-features">
-                            <li><strong>Alles aus Basic Paket +</strong></li>
-                            <li>Entwicklung & Implementierung einer Content-Strategie</li>
-                            <li>Employer-Branding auf Social Media</li>
-                            <li>Workshops für HR-Teams</li>
-                            <li>Performance-Controlling & Reporting</li>
-                            <li><strong>Workshop (4 Stunden) + Follow-up</strong></li>
-                        </ul>
-                        <a href="#kontakt" class="package-button">Jetzt buchen</a>
-                    </div>
+          <div class="metric">
+            <div class="tiny">Brand DNA</div>
+            <div class="n">Specialty</div>
+            <p class="muted">
+              Premium-Produkt, Haltung, persönliche Beziehungen, Community-Fit. Genau diese Stärken können auch als
+              Arbeitgebermarke wirken – wenn sie sichtbar werden.
+            </p>
+          </div>
 
-                    <!-- Premium Package -->
-                    <div class="package-card">
-                        <span class="package-icon">💎</span>
-                        <h3 class="package-name">Premium</h3>
-                        <p class="package-price">Preis auf Anfrage</p>
-                        <ul class="package-features">
-                            <li><strong>Alles aus Business Paket +</strong></li>
-                            <li>Automatisierte Bewerber-Workflows & Matching-Systeme</li>
-                            <li>Integration in bestehende HR-Prozesse & Systeme</li>
-                            <li>Echtzeit-Dashboard für Kampagnen-Performance</li>
-                            <li>Dauerhafter Support & Optimierung</li>
-                            <li><strong>Ganztags-Workshop + 3 Monate Betreuung</strong></li>
-                        </ul>
-                        <a href="#kontakt" class="package-button">Exklusiv anfragen</a>
-                    </div>
-                </div>
-
-                <div class="highlight-box" style="margin-top: 60px; background: linear-gradient(135deg, rgba(6, 255, 165, 0.1), rgba(4, 217, 139, 0.1)); border-color: var(--success-green);">
-                    <h3 class="highlight-title" style="color: var(--success-green);">🚀 Workshop-Special: 20% Rabatt bei Buchung innerhalb von 7 Tagen!</h3>
-                    <div class="highlight-content">
-                        <p style="font-size: 1.2em;">Nehmen Sie am Workshop teil und entscheiden Sie sich danach für ein Paket – wir geben Ihnen <strong>20% Rabatt</strong>, wenn Sie innerhalb einer Woche buchen.</p>
-                        <p style="margin-top: 15px;"><strong>Bonus:</strong> Kostenloser 30-Min-Strategie-Call im Anschluss an den Workshop!</p>
-                    </div>
-                </div>
-
-                <h3 class="subsection-title" style="margin-top: 60px; text-align: center;">So funktioniert die Zusammenarbeit</h3>
-
-                <div class="timeline" style="margin-top: 40px;">
-                    <div class="timeline-item">
-                        <div class="timeline-time">Schritt 1</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">🤝 Kennenlernen im Workshop</h4>
-                            <p class="timeline-description">Sie nehmen an unserem 4-stündigen Workshop teil, lernen unsere Arbeitsweise kennen und bekommen erste Quick Wins zum sofort umsetzen.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">Schritt 2</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">📊 Kostenloses Strategie-Gespräch</h4>
-                            <p class="timeline-description">Nach dem Workshop bieten wir Ihnen einen 30-minütigen Call an, in dem wir Ihre individuellen Bedürfnisse besprechen und das passende Paket empfehlen.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">Schritt 3</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">🚀 Umsetzung & Erfolg</h4>
-                            <p class="timeline-description">Wir starten mit der Umsetzung – je nach gewähltem Paket mit Workshop-Vertiefung, Content-Erstellung, Automation-Setup oder Komplettbetreuung.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-time">Schritt 4</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">📈 Messbare Ergebnisse</h4>
-                            <p class="timeline-description">Innerhalb von 30-90 Tagen sehen Sie erste Erfolge: Mehr Bewerbungen, bessere Kandidaten, effizientere Prozesse. Wir messen und optimieren kontinuierlich.</p>
-                        </div>
-                    </div>
-                </div>
+          <div class="grid two" style="margin: 0">
+            <div class="metric">
+              <div class="tiny">Standorte</div>
+              <div class="n" data-count="2">0</div>
+              <p class="muted">Coblitzallee 8 und Julius-Hatry-Straße 1 in Mannheim.</p>
             </div>
-        </div>
-
-        <!-- Kontakt Section -->
-        <div id="kontakt" class="content-section">
-            <div class="section-card">
-                <h2 class="section-title">Bereit für den nächsten Schritt?</h2>
-                <p style="text-align: center; font-size: 1.4em; color: var(--medium-text); margin-bottom: 50px;">
-                    Buchen Sie jetzt Ihren Workshop-Platz oder vereinbaren Sie ein kostenloses Erstgespräch
-                </p>
-
-                <div class="highlight-box" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); border-color: var(--purple);">
-                    <h3 class="highlight-title" style="color: var(--purple);">📍 Workshop-Details</h3>
-                    <div class="highlight-content">
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>📅 Dauer:</strong> 4 Stunden (09:00 - 13:00 Uhr)
-                        </p>
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>👥 Teilnehmer:</strong> 8-15 Personen (kleine Gruppe für intensive Betreuung)
-                        </p>
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>📍 Ort:</strong> Coblitzallee 1-9, 68163 Mannheim
-                        </p>
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>💰 Investition:</strong> Preis auf Anfrage (Frühbucher-Rabatt verfügbar!)
-                        </p>
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>☕ Inklusive:</strong> Getränke, Snacks, alle Materialien, digitale Ressourcen & Follow-up Support
-                        </p>
-                        <p style="font-size: 1.2em; margin: 15px 0;">
-                            <strong>🎯 Zielgruppe:</strong> HR-Verantwortliche & Geschäftsführer, die besser rekrutieren möchten
-                        </p>
-                    </div>
-                </div>
-
-                <h3 class="subsection-title" style="margin-top: 60px; text-align: center;">Kontaktieren Sie uns</h3>
-                
-                <div class="qr-section">
-                    <div class="qr-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-                            <rect width="200" height="200" fill="white"/>
-                            <rect x="20" y="20" width="60" height="60" fill="black"/>
-                            <rect x="30" y="30" width="40" height="40" fill="white"/>
-                            <rect x="120" y="20" width="60" height="60" fill="black"/>
-                            <rect x="130" y="30" width="40" height="40" fill="white"/>
-                            <rect x="20" y="120" width="60" height="60" fill="black"/>
-                            <rect x="30" y="130" width="40" height="40" fill="white"/>
-                            <rect x="90" y="90" width="20" height="20" fill="black"/>
-                            <rect x="100" y="50" width="10" height="10" fill="black"/>
-                            <rect x="50" y="100" width="10" height="10" fill="black"/>
-                            <rect x="140" y="140" width="40" height="40" fill="black"/>
-                        </svg>
-                        <p class="qr-title">📱 Instagram<br>@recruit_smartaicquisition</p>
-                    </div>
-
-                    <div class="qr-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-                            <rect width="200" height="200" fill="white"/>
-                            <rect x="20" y="20" width="60" height="60" fill="black"/>
-                            <rect x="30" y="30" width="40" height="40" fill="white"/>
-                            <rect x="120" y="20" width="60" height="60" fill="black"/>
-                            <rect x="130" y="30" width="40" height="40" fill="white"/>
-                            <rect x="20" y="120" width="60" height="60" fill="black"/>
-                            <rect x="30" y="130" width="40" height="40" fill="white"/>
-                            <rect x="100" y="100" width="10" height="10" fill="black"/>
-                            <rect x="140" y="100" width="30" height="30" fill="black"/>
-                            <rect x="100" y="140" width="20" height="20" fill="black"/>
-                        </svg>
-                        <p class="qr-title">📅 Workshop buchen<br>Jetzt Platz sichern!</p>
-                    </div>
-
-                    <div class="qr-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-                            <rect width="200" height="200" fill="white"/>
-                            <rect x="20" y="20" width="60" height="60" fill="black"/>
-                            <rect x="30" y="30" width="40" height="40" fill="white"/>
-                            <rect x="120" y="20" width="60" height="60" fill="black"/>
-                            <rect x="130" y="30" width="40" height="40" fill="white"/>
-                            <rect x="20" y="120" width="60" height="60" fill="black"/>
-                            <rect x="30" y="130" width="40" height="40" fill="white"/>
-                            <rect x="95" y="95" width="20" height="20" fill="black"/>
-                            <rect x="120" y="120" width="50" height="50" fill="black"/>
-                        </svg>
-                        <p class="qr-title">📧 Email<br>hello@recruit.ai</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(102, 126, 234, 0.1)); border-radius: 20px;">
-                    <p style="font-size: 1.2em; color: var(--dark-text); margin-bottom: 25px;">
-                        <strong>📧 Email:</strong> hello@recruit.ai<br>
-                        <strong>📍 Adresse:</strong> Coblitzallee 1-9, 68163 Mannheim<br>
-                        <strong>📱 Instagram:</strong> @recruit_smartaicquisition
-                    </p>
-                </div>
-
-                <h3 class="subsection-title" style="margin-top: 60px;">Unser Team</h3>
-                <p style="text-align: center; font-size: 1.2em; color: var(--medium-text); margin-bottom: 30px;">
-                    Junges, dynamisches Team mit KI Know-how und frischen Ideen
-                </p>
-
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--primary-cyan), var(--accent-pink));">👨‍💼</div>
-                        <div class="team-name">Eric Uphoff</div>
-                        <div class="team-role">Project Manager</div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--success-green), var(--primary-cyan));">👩‍💼</div>
-                        <div class="team-name">Berin Kurtbas</div>
-                        <div class="team-role">Communication & Presentation</div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent-pink), var(--primary-cyan));">👨‍💻</div>
-                        <div class="team-name">Antonios Schinarakis</div>
-                        <div class="team-role">Technical Expert</div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--primary-cyan), var(--success-green));">👩‍🎨</div>
-                        <div class="team-name">Stefanie Fast</div>
-                        <div class="team-role">Marketing & Design</div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--success-green), var(--accent-pink));">👨‍💼</div>
-                        <div class="team-name">Atilla Cal</div>
-                        <div class="team-role">Business Process</div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent-pink), var(--success-green));">👨‍💻</div>
-                        <div class="team-name">Matteo Isemann</div>
-                        <div class="team-role">Automation</div>
-                    </div>
-                </div>
-
-                <div class="action-buttons" style="margin-top: 60px;">
-                    <a href="https://www.instagram.com/recruit_smartaicquisition/" target="_blank" class="action-btn action-btn-primary pulse">Auf Instagram folgen</a>
-                    <a href="mailto:hello@recruit.ai" class="action-btn action-btn-secondary">Workshop buchen</a>
-                </div>
-
-                <div class="highlight-box" style="margin-top: 60px; background: white; border: 3px solid var(--success-green);">
-                    <h3 class="highlight-title" style="color: var(--success-green);">💚 Alles low risk & high reward</h3>
-                    <div class="highlight-content">
-                        <p style="font-size: 1.2em;">Wir sind überzeugt von unserem Ansatz und gehen mit Ihnen gemeinsam den Weg. Kein Risiko, nur Chancen – und messbare Ergebnisse.</p>
-                        <p style="margin-top: 15px; font-size: 1.1em;"><strong>Starten Sie jetzt Ihre Recruiting-Revolution!</strong></p>
-                    </div>
-                </div>
+            <div class="metric">
+              <div class="tiny">Start</div>
+              <div class="n" data-count="2016">0</div>
+              <p class="muted">Seit 2016 als Specialty-Coffee-Rösterei aktiv.</p>
             </div>
+          </div>
+
+          <div class="metric">
+            <div class="tiny">Kontaktpunkte</div>
+            <p class="muted">
+              Café, eigene Rösterei, Kurse/Seminare und B2B – mehrere Bühnen, auf denen Recruiting (unbewusst) bereits
+              stattfindet. Wir machen das planbar und messbar.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid two" id="workshop" aria-label="Workshop">
+        <article class="card section">
+          <span class="pill">Workshop Ablauf</span>
+          <h3 style="margin-top: 16px">Discovery-first: Ursachen → Prioritäten → Pilot</h3>
+          <p class="muted" style="margin-top: 10px; line-height: 1.55">
+            Jeder Punkt ist klickbar. Ziel ist nicht „alles auf einmal“, sondern ein klarer Fokus, der schnell Wirkung
+            zeigt.
+          </p>
+
+          <div class="agenda" id="agenda">
+            <details open>
+              <summary>
+                <div class="nr">01</div>
+                <div>
+                  <strong>Kontext & Ist-Situation</strong>
+                  <div class="muted">Wie sieht der Alltag wirklich aus?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir starten mit AGÁTAs Realität: Standorte, Teamdynamik, Saisonalität, Serviceanspruch, Wachstum. Wo
+                funktioniert Recruiting heute schon – und wo entsteht Reibung (Schichtplanung, Führung, Servicequalität)?
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="nr">02</div>
+                <div>
+                  <strong>Pains & Prioritäten</strong>
+                  <div class="muted">Was kostet heute Zeit, Geld oder Qualität?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir sammeln nicht nur offene Rollen, sondern Ursachen: Sichtbarkeit, Bewerberqualität, Response‑Zeiten,
+                Interview‑Flow, Standort‑Unterschiede, Barista‑/Service‑Spezifika. Ergebnis: eine priorisierte Problemkarte.
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="nr">03</div>
+                <div>
+                  <strong>Lösungsfit</strong>
+                  <div class="muted">Welche Bausteine helfen wirklich – jetzt?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Erst nach der Priorisierung zeigen wir passende Recruit‑Bausteine – zugeschnitten auf Marke, Größe und
+                operative Realität. Keine Standardpakete, sondern ein Fokus auf den größten Hebel.
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="nr">04</div>
+                <div>
+                  <strong>Nächste Schritte</strong>
+                  <div class="muted">Ein Pilot, der messbar und risikoarm ist</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir definieren 1–2 pragmatische Schritte: Audit, Testkampagne, Funnel‑Setup oder Employer‑Branding‑Sprint –
+                inklusive KPI‑Set (Zeit bis Erstkontakt, qualifizierte Bewerbungen, Show‑Up‑Rate, Cost per Lead).
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="card section" id="pain" aria-label="Pain Points">
+          <span class="pill blue">Pain Hypothesen</span>
+          <h3 style="margin-top: 16px">Typische Engpässe einer Premium-Coffee-Brand</h3>
+          <p class="muted" style="margin-top: 10px; line-height: 1.55">
+            Klick dich durch: Wir nutzen das im Gespräch als „Hypothesen-Menü“ – AGÁTA bestätigt, ergänzt oder streicht.
+          </p>
+
+          <div class="select-grid" role="listbox" aria-label="Pain Auswahl" id="painList">
+            <button class="pain" role="option" aria-selected="true" data-key="visibility">
+              <strong>Sichtbarkeit</strong>
+              <p class="muted">Gute Kandidat:innen sind da – aber sehen AGÁTA nicht als Arbeitgeber.</p>
+            </button>
+            <button class="pain" role="option" aria-selected="false" data-key="speed">
+              <strong>Geschwindigkeit</strong>
+              <p class="muted">Recruiting läuft nebenbei – gute Bewerbungen verpuffen zu langsam.</p>
+            </button>
+            <button class="pain" role="option" aria-selected="false" data-key="fit">
+              <strong>Fit & Haltung</strong>
+              <p class="muted">Premium-Service, Produktleidenschaft, Community-Anspruch – nicht jede Bewerbung passt.</p>
+            </button>
+            <button class="pain" role="option" aria-selected="false" data-key="scale">
+              <strong>Standort-Skalierung</strong>
+              <p class="muted">Zwei Standorte + mehrere Angebotsformen erhöhen Rollenvielfalt und Koordination.</p>
+            </button>
+          </div>
+
+          <div class="panel" id="painPanel" aria-live="polite">
+            <strong>Was wir im Workshop dazu klären</strong>
+            <div class="muted" id="painText">
+              Wo entsteht die größte Lücke: Reichweite, Kandidat:innen-Qualität oder das Arbeitgeberbild? Welche Kanäle
+              liefern heute (noch) nichts – und welche wären für Barista/Service realistisch?
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card section" aria-label="Pitch">
+        <span class="pill">So wirkt der Pitch modern</span>
+        <h2 style="margin-top: 16px">Nicht „Hier sind unsere Leistungen“ – sondern: „Hier ist euer größter Hebel.“</h2>
+        <p class="lead" style="font-size: 18px">
+          Wir wählen aus vier Bausteinen nur das, was nach dem Workshop wirklich Sinn macht. Damit bleibt der Pitch klar,
+          souverän und partnerschaftlich.
+        </p>
+
+        <div class="grid four" style="margin-top: 20px" id="offer" aria-label="Angebot">
+          <div class="service">
+            <div>
+              <span class="tag blue">01 Discovery</span>
+              <h3 style="margin-top: 14px">Recruiting Quick Audit</h3>
+              <p class="muted" style="margin-top: 10px; line-height: 1.55">
+                Candidate Journey, Touchpoints, Reaktionszeiten, Messaging – gespiegelt gegen AGÁTAs Premium-Anspruch.
+              </p>
+            </div>
+            <strong>Ergebnis: klare Problemkarte + Priorität</strong>
+          </div>
+
+          <div class="service">
+            <div>
+              <span class="tag lime">02 Positionierung</span>
+              <h3 style="margin-top: 14px">Employer Story</h3>
+              <p class="muted" style="margin-top: 10px; line-height: 1.55">
+                Aus Specialty, Transparenz, Beziehung und Lokalität wird eine glaubwürdige Arbeitgebererzählung, die man
+                „spürt“ – online wie vor Ort.
+              </p>
+            </div>
+            <strong>Ergebnis: mehr Resonanz + besserer Fit</strong>
+          </div>
+
+          <div class="service">
+            <div>
+              <span class="tag blue">03 Performance</span>
+              <h3 style="margin-top: 14px">Digitale Recruiting-Funnels</h3>
+              <p class="muted" style="margin-top: 10px; line-height: 1.55">
+                Landingpage, Social Recruiting, A/B‑Tests, Retargeting – statt generischer Jobposts ohne Lerneffekt.
+              </p>
+            </div>
+            <strong>Ergebnis: messbarer Bewerberzufluss</strong>
+          </div>
+
+          <div class="service">
+            <div>
+              <span class="tag lime">04 Enablement</span>
+              <h3 style="margin-top: 14px">Team & Prozess</h3>
+              <p class="muted" style="margin-top: 10px; line-height: 1.55">
+                Vorlagen, Dashboards und klare Abläufe, damit Recruiting nicht im Tagesgeschäft untergeht – und gute
+                Kandidat:innen nicht wegrutschen.
+              </p>
+            </div>
+            <strong>Ergebnis: weniger Reibung + mehr Tempo</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid two" aria-label="Moderation und Roadmap">
+        <article class="card section">
+          <span class="pill">Workshop Moderation</span>
+          <h3 style="margin-top: 16px">Fragen, die Entscheidungen ermöglichen</h3>
+
+          <div class="agenda" style="margin-top: 16px">
+            <details>
+              <summary>
+                <div class="nr">Q1</div>
+                <div>
+                  <strong>Woran merkt ihr zuerst, dass Recruiting nicht rund läuft?</strong>
+                  <div class="muted">Service, Schichtplanung, Führung oder Wachstum?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir übersetzen das in messbare Signale: kurzfristige Ausfälle, Überstunden, Qualitätsdruck, Absagenquote,
+                „No‑Shows“ beim Probearbeiten.
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="nr">Q2</div>
+                <div>
+                  <strong>Welche Rollen sind am schwersten – und warum genau?</strong>
+                  <div class="muted">Barista, Service, Management, Roastery, B2B‑nah?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                „Warum“ entscheidet über die Lösung: zu wenig Reichweite, falsche Ansprache, unklarer Prozess oder Fit‑Thema
+                (Haltung/Service‑Standard/Arbeitszeiten).
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="nr">Q3</div>
+                <div>
+                  <strong>Was macht AGÁTA als Arbeitgeber heute besonders?</strong>
+                  <div class="muted">Und ist das online schon sichtbar genug?</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir destillieren 3–5 Beweise (Beispiele/Stories) – damit die Employer Story nicht „Werbetext“, sondern
+                glaubwürdig ist.
+              </div>
+            </details>
+
+            <details open>
+              <summary>
+                <div class="nr">Q4</div>
+                <div>
+                  <strong>Wie schnell bekommt ein guter Kandidat heute Rückmeldung?</strong>
+                  <div class="muted">Das ist oft der größte Prozesshebel.</div>
+                </div>
+                <div class="chev" aria-hidden="true">⌄</div>
+              </summary>
+              <div class="details-body">
+                Wir definieren eine Ziel‑SLA (z. B. 24–48h), Verantwortlichkeiten und eine einfache „Next‑Step“ Logik, damit
+                Tempo nicht von Einzelpersonen abhängt.
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="card section">
+          <span class="pill">Roadmap</span>
+          <h3 style="margin-top: 16px">Vom Workshop zum Pilot (klar, kurz, messbar)</h3>
+          <div class="steps">
+            <div class="step"><strong>Audit</strong><p class="muted">Ist‑Zustand, Funnel, Assets, Rollen.</p></div>
+            <div class="step"><strong>Priorisieren</strong><p class="muted">Top‑1 Pain mit Business‑Impact.</p></div>
+            <div class="step"><strong>Konzept</strong><p class="muted">Story, Creatives, Landingpage.</p></div>
+            <div class="step"><strong>Live‑Test</strong><p class="muted">Pilot mit KPIs & Lernloop.</p></div>
+            <div class="step"><strong>Scale</strong><p class="muted">Wiederholbares Setup für Rollen.</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card cta" id="next" aria-label="Next Step">
+        <div>
+          <span class="pill lime">Vorschlag für den Abschluss</span>
+          <h2 style="margin-top: 16px">Lasst uns klein starten – und sofort lernen.</h2>
+          <p class="lead" style="font-size: 18px">
+            Nicht direkt das große Paket. Sondern: 1 priorisierte Rolle oder ein Standort, 1 sauberer Funnel, 1 KPI‑Set.
+            Das wirkt souverän, risikoarm und partnerschaftlich.
+          </p>
+          <div class="actions">
+            <a class="pill btn primary" href="mailto:hello@recruit.example?subject=AGÁTA%20%E2%80%94%20Audit%20Sprint%20anfragen">
+              Sprint anfragen
+            </a>
+            <button class="pill btn secondary" id="copySummaryBtn" type="button">Zusammenfassung kopieren</button>
+          </div>
+          <p class="muted" style="margin-top: 10px; line-height: 1.55">
+            Tipp im Gespräch: „Wenn wir in 2 Wochen herausfinden, welcher Hebel bei euch wirklich wirkt, ist das ein
+            gutes Investment – egal ob wir danach skalieren oder nicht.“
+          </p>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <h3 class="footer-title">Gemeinsam Zukunft gestalten!</h3>
-            <p class="footer-subtitle">HR by Design. Powered by AI.</p>
-            <div class="footer-links">
-                <a href="#problem" class="footer-link">Herausforderung</a>
-                <a href="#loesung" class="footer-link">Lösung</a>
-                <a href="#agenda" class="footer-link">Workshop</a>
-                <a href="#pakete" class="footer-link">Pakete</a>
-                <a href="#kontakt" class="footer-link">Kontakt</a>
-            </div>
-            <p style="margin-top: 40px; color: var(--medium-text);">© 2025 re:cruit. Alle Rechte vorbehalten.</p>
+        <div class="proof">
+          <div>
+            <strong>Empfohlener erster Schritt</strong>
+            <p class="muted">
+              2‑wöchiger Recruiting- & Employer‑Branding‑Audit für eine priorisierte Rolle oder einen Standort.
+            </p>
+          </div>
+          <div>
+            <strong>Konkreter Output</strong>
+            <p class="muted">Pain Map, Messaging‑Hypothesen, Funnel‑Skizze, KPI‑Set und Pilot‑Empfehlung.</p>
+          </div>
+          <div>
+            <strong>Warum das zieht</strong>
+            <p class="muted">
+              Sofort Struktur, Verständnis und Umsetzbarkeit – ohne ein großes Commitment zu verlangen.
+            </p>
+          </div>
+          <div class="metric" style="margin-top: 4px">
+            <div class="tiny">Pilot-KPIs (Beispiel)</div>
+            <p class="muted" style="margin-top: 8px; line-height: 1.55">
+              <strong>48h</strong> bis Erstkontakt · <strong>Qualität</strong> statt Masse · <strong>Show‑Up‑Rate</strong>
+              bei Probearbeiten · <strong>Tempo</strong> bis Entscheidung
+            </p>
+          </div>
         </div>
+      </section>
+
+      <p class="footer">
+        Design orientiert sich an der Recruit × AGÁTA PDF: reduzierte Typografie, hellgrauer Canvas, lime/blaues
+        Akzentsystem, runde Cards und modulare Story‑Slides. Diese HTML‑Version ergänzt das um Interaktion (Accordions,
+        Scroll‑Spy, persistenter Darkmode, Copy‑to‑Clipboard) und bessere Mobile‑UX.
+      </p>
+    </main>
+
+    <div class="toggle" aria-label="Schnellaktionen">
+      <button class="fab secondary" id="themeBtn" type="button" title="Theme wechseln" aria-label="Theme wechseln">
+        ◐
+      </button>
+      <button class="fab primary" id="topBtn" type="button" title="Nach oben" aria-label="Nach oben scrollen">
+        ↑
+      </button>
     </div>
 
     <script>
-        // Navigation functionality
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+      // Theme: system default + persist
+      const THEME_KEY = "recruit_theme";
+      const applyTheme = (mode) => {
+        document.body.classList.toggle("dark", mode === "dark");
+      };
+      const getPreferredTheme = () => {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === "light" || stored === "dark") return stored;
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      };
+      let theme = getPreferredTheme();
+      applyTheme(theme);
+
+      $("#themeBtn").addEventListener("click", () => {
+        theme = theme === "dark" ? "light" : "dark";
+        localStorage.setItem(THEME_KEY, theme);
+        applyTheme(theme);
+      });
+
+      // Scroll to top
+      $("#topBtn").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+      // Mobile menu
+      const menuBtn = $("#menuBtn");
+      const mobileMenu = $("#mobileMenu");
+      const closeMobileMenu = () => {
+        mobileMenu.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      };
+      menuBtn.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      $$("#mobileMenu a").forEach((a) => a.addEventListener("click", closeMobileMenu));
+
+      // Agenda: keep one open at a time (accordion behavior)
+      const agenda = $("#agenda");
+      if (agenda) {
+        const items = $$("details", agenda);
+        items.forEach((d) => {
+          d.addEventListener("toggle", () => {
+            if (!d.open) return;
+            items.forEach((other) => {
+              if (other !== d) other.open = false;
             });
-
-            const selectedSection = document.getElementById(sectionId);
-            selectedSection.classList.add('active');
-
-            const tabs = document.querySelectorAll('.nav-tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        }
-
-        // Progress bar
-        window.addEventListener('scroll', () => {
-            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.getElementById('progressBar').style.width = scrollPercentage + '%';
+          });
         });
+      }
 
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+      // Pain selector with details panel
+      const painCopy = {
+        visibility:
+          "Wo entsteht die Lücke: Reichweite, Kandidat:innen-Qualität oder Arbeitgeberbild? Welche Kanäle funktionieren für Barista/Service wirklich – und welche Botschaften würden AGÁTA glaubwürdig differenzieren?",
+        speed:
+          "Wie viele Stunden/Tage vergehen bis zur ersten Rückmeldung? Wo hängen Entscheidungen? Wir bauen eine einfache SLA + Next-Step Logik, damit gute Bewerbungen nicht wegrutschen.",
+        fit:
+          "Welche 3–5 Merkmale machen einen „wirklich passenden“ Hire aus (Service-Standard, Haltung, Lernbereitschaft, Team)? Daraus bauen wir Screening & Messaging, das Qualität statt Masse liefert.",
+        scale:
+          "Unterscheiden sich die Standorte (Zeitmodelle, Team, Peak-Zeiten)? Welche Rollen werden wiederholt gebraucht? Ziel: ein Setup, das pro Rolle reproduzierbar ist – ohne mehr Aufwand im Alltag.",
+      };
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+      const painList = $("#painList");
+      const painText = $("#painText");
+      const setPain = (key) => {
+        const buttons = $$("button.pain", painList);
+        buttons.forEach((b) => b.setAttribute("aria-selected", b.dataset.key === key ? "true" : "false"));
+        painText.textContent = painCopy[key] || painCopy.visibility;
+      };
+      if (painList && painText) {
+        painList.addEventListener("click", (e) => {
+          const btn = e.target.closest("button.pain");
+          if (!btn) return;
+          setPain(btn.dataset.key);
         });
+        painList.addEventListener("keydown", (e) => {
+          const buttons = $$("button.pain", painList);
+          const currentIdx = buttons.findIndex((b) => b.getAttribute("aria-selected") === "true");
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowUp")
+            return;
+          e.preventDefault();
+          const dir = e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 1;
+          const next = (currentIdx + dir + buttons.length) % buttons.length;
+          buttons[next].focus();
+          setPain(buttons[next].dataset.key);
+        });
+      }
 
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+      // Count-up numbers when visible
+      const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const formatNumber = (n) => (n >= 1000 ? n.toString() : String(n));
+      const animateCount = (el, target) => {
+        if (prefersReducedMotion) {
+          el.textContent = formatNumber(target);
+          return;
+        }
+        const duration = 900;
+        const start = performance.now();
+        const startVal = 0;
+        const tick = (t) => {
+          const p = Math.min((t - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const value = Math.round(startVal + (target - startVal) * eased);
+          el.textContent = formatNumber(value);
+          if (p < 1) requestAnimationFrame(tick);
         };
+        requestAnimationFrame(tick);
+      };
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            animateCount(e.target, Number(e.target.dataset.count));
+            io.unobserve(e.target);
+          }),
+        { threshold: 0.55 }
+      );
+      $$("[data-count]").forEach((el) => io.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+      // Scroll-spy: highlight current section in nav (desktop + mobile)
+      const spyLinks = $$('[data-spy]');
+      const sections = ["story", "workshop", "pain", "offer", "next"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      const setActive = (id) => {
+        spyLinks.forEach((a) => a.classList.toggle("is-active", a.dataset.spy === id));
+      };
+      const spyObserver = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          if (visible[0]?.target?.id) setActive(visible[0].target.id);
+        },
+        { rootMargin: "-20% 0px -60% 0px", threshold: [0.12, 0.2, 0.35, 0.5, 0.7] }
+      );
+      sections.forEach((s) => spyObserver.observe(s));
 
-        document.querySelectorAll('.section-card, .problem-card, .solution-card, .package-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+      // Copy summary to clipboard
+      const copyBtn = $("#copySummaryBtn");
+      if (copyBtn && navigator.clipboard) {
+        copyBtn.addEventListener("click", async () => {
+          const text =
+            "Recruit × AGÁTA – Vorschlag: 2‑wöchiger Audit/Sprint. Output: Pain Map, Messaging‑Hypothesen, Funnel‑Skizze, KPI‑Set, Pilot‑Empfehlung. Ziel: größten Recruiting‑Hebel priorisieren und risikoarm messen.";
+          try {
+            await navigator.clipboard.writeText(text);
+            copyBtn.textContent = "Kopiert ✓";
+            setTimeout(() => (copyBtn.textContent = "Zusammenfassung kopieren"), 1400);
+          } catch (_) {
+            // ignore
+          }
         });
-
-        // Console Easter Egg
-        console.log('%c🚀 re:cruit Workshop', 'color: #00d4ff; font-size: 20px; font-weight: bold;');
-        console.log('%c✨ Social Recruiting leicht gemacht', 'color: #06ffa5; font-size: 14px;');
-        console.log('%cKontakt: hello@recruit.ai', 'color: #ff006e; font-size: 14px;');
+      } else if (copyBtn) {
+        copyBtn.style.display = "none";
+      }
     </script>
-</body>
+  </body>
 </html>
+

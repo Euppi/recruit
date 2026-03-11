@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
-      content="re:ɔruit  × AGÁTA – Discovery-first Workshop Pitch: vom Ist-Zustand über Pain-Priorisierung zum messbaren Pilot."
+      content="Recruit × AGÁTA – Discovery-first Workshop Pitch: vom Ist-Zustand über Pain-Priorisierung zum messbaren Pilot."
     />
     <title>Recruit × AGÁTA — Workshop Pitch (Kundenversion)</title>
     <style>
@@ -23,6 +23,10 @@
         --radius: 30px;
         --max: 1340px;
         --ring: 0 0 0 4px rgba(47, 85, 255, 0.18);
+        --softline: rgba(42, 44, 49, 0.14);
+        --softline-2: rgba(42, 44, 49, 0.22);
+        --softBlue: rgba(47, 85, 255, 0.12);
+        --softLime: rgba(200, 240, 74, 0.22);
       }
 
       * {
@@ -41,6 +45,17 @@
         color: var(--text);
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+      }
+
+      .bgwash {
+        position: fixed;
+        inset: -40vh -20vw auto -20vw;
+        height: 70vh;
+        background: radial-gradient(600px 380px at 20% 30%, var(--softLime), transparent 60%),
+          radial-gradient(700px 420px at 68% 10%, var(--softBlue), transparent 60%);
+        pointer-events: none;
+        z-index: -1;
+        filter: blur(2px);
       }
 
       a {
@@ -252,6 +267,19 @@
         line-height: 1.5;
       }
 
+      .sublead {
+        margin-top: 10px;
+        max-width: 72ch;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--softline);
+        margin: 22px 0;
+      }
+
       .muted {
         color: var(--muted);
       }
@@ -347,6 +375,78 @@
         padding: 30px;
       }
 
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .kpi {
+        padding: 16px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1.5px solid var(--softline);
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+
+      .kpi:hover {
+        transform: translateY(-1px);
+        border-color: var(--softline-2);
+      }
+
+      .kpi .label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 760;
+      }
+
+      .kpi .value {
+        margin-top: 10px;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .check {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        gap: 10px;
+        align-items: start;
+        padding: 12px 12px;
+        border-radius: 18px;
+        border: 1.5px solid var(--softline);
+        background: #fff;
+      }
+
+      .check .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 1.5px solid var(--line);
+        background: var(--lime);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 13px;
+      }
+
       .split {
         display: grid;
         grid-template-columns: 1fr;
@@ -362,7 +462,7 @@
 
       details {
         border-radius: 22px;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
         background: #fff;
         overflow: hidden;
         transition: transform 0.15s ease, border-color 0.15s ease;
@@ -432,7 +532,7 @@
       .pain {
         padding: 18px;
         border-radius: 22px;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
         background: #fff;
         cursor: pointer;
         transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
@@ -473,7 +573,7 @@
         min-height: 220px;
         padding: 18px;
         border-radius: 22px;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
         background: #fff;
         display: flex;
         flex-direction: column;
@@ -511,7 +611,7 @@
         padding: 18px;
         border-radius: 22px;
         background: #fff;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
       }
 
       .metric .n {
@@ -531,7 +631,7 @@
       .step {
         padding: 56px 18px 18px;
         border-radius: 22px;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
         background: #fff;
         position: relative;
         transition: transform 0.15s ease, border-color 0.15s ease;
@@ -577,7 +677,7 @@
         gap: 14px;
         padding: 18px;
         border-radius: 22px;
-        border: 1.5px solid rgba(42, 44, 49, 0.14);
+        border: 1.5px solid var(--softline);
         background: #fff;
       }
 
@@ -675,6 +775,10 @@
         --line: #eceef4;
         --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
         --ring: 0 0 0 4px rgba(200, 240, 74, 0.18);
+        --softline: rgba(236, 238, 244, 0.14);
+        --softline-2: rgba(236, 238, 244, 0.22);
+        --softBlue: rgba(47, 85, 255, 0.16);
+        --softLime: rgba(200, 240, 74, 0.12);
       }
 
       body.dark .pill,
@@ -724,6 +828,9 @@
         .steps {
           grid-template-columns: 1fr;
         }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 860px) {
@@ -753,10 +860,14 @@
         .select-grid {
           grid-template-columns: 1fr;
         }
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
+    <div class="bgwash" aria-hidden="true"></div>
     <nav class="nav" aria-label="Hauptnavigation">
       <div class="nav-inner">
         <div class="logo">
@@ -769,6 +880,7 @@
 
         <div class="nav-links" id="desktopNav">
           <a class="pill" href="#story" data-spy="story">Story</a>
+          <a class="pill" href="#outcomes" data-spy="outcomes">Ergebnis</a>
           <a class="pill" href="#workshop" data-spy="workshop">Workshop</a>
           <a class="pill" href="#pain" data-spy="pain">Pain Points</a>
           <a class="pill" href="#offer" data-spy="offer">Angebot</a>
@@ -784,6 +896,7 @@
       <div class="mobile-menu" id="mobileMenu">
         <div class="stack" role="navigation" aria-label="Mobile Navigation">
           <a class="pill" href="#story" data-spy="story">Story</a>
+          <a class="pill" href="#outcomes" data-spy="outcomes">Ergebnis</a>
           <a class="pill" href="#workshop" data-spy="workshop">Workshop</a>
           <a class="pill" href="#pain" data-spy="pain">Pain Points</a>
           <a class="pill" href="#offer" data-spy="offer">Angebot</a>
@@ -803,14 +916,17 @@
             <span class="pill lime">Pitch-ready: Workshop statt Sales-Monolog</span>
             <h1>Great coffee needs <span class="blue">great people.</span></h1>
             <p class="lead">
-              Ein Setup für AGÁTA, das mit Verstehen startet: Wir klären Kontext, priorisieren den größten Hebel und
-              landen bei einem kleinen, messbaren Pilot. Visuell angelehnt an die Recruit × AGÁTA PDF: hell, minimal,
-              typostark, lime/blau und modular.
+              Ein Setup für AGÁTA, das mit Verstehen startet: Kontext klären, den größten Recruiting‑Hebel priorisieren,
+              dann mit einem kleinen Pilot messbar testen (statt direkt „das große Paket“).
+            </p>
+            <p class="sublead">
+              Für Premium‑Brands funktioniert Recruiting dann am besten, wenn Story, Prozess und Kanal zusammenpassen:
+              sichtbar genug, schnell genug, mit gutem Fit.
             </p>
 
             <div class="actions">
               <a class="pill btn primary" href="#next">Sprint vorschlagen</a>
-              <a class="pill btn secondary" href="#offer">Bausteine ansehen</a>
+              <a class="pill btn secondary" href="#outcomes">Was kommt raus?</a>
             </div>
           </div>
 
@@ -872,6 +988,93 @@
             </p>
           </div>
         </aside>
+      </section>
+
+      <section class="grid two" id="outcomes" aria-label="Ergebnis und Deliverables">
+        <article class="card section">
+          <div class="section-head">
+            <span class="pill">Ergebnis</span>
+            <span class="pill blue">60–90 Minuten Workshop</span>
+          </div>
+          <h3 style="margin-top: 16px">Was AGÁTA danach in der Hand hat</h3>
+          <p class="muted" style="margin-top: 10px; line-height: 1.55">
+            Der Workshop ist kein „Nice‑to‑have“. Er endet mit Entscheidungen, die man direkt in den Betrieb übersetzen
+            kann.
+          </p>
+
+          <div class="checklist" aria-label="Deliverables Liste">
+            <div class="check">
+              <div class="dot" aria-hidden="true">✓</div>
+              <div>
+                <strong>Priorisierte Pain Map (Top‑1 Hebel)</strong>
+                <div class="muted">Ursache, Impact, Aufwand – als Entscheidungsgrundlage.</div>
+              </div>
+            </div>
+            <div class="check">
+              <div class="dot" aria-hidden="true">✓</div>
+              <div>
+                <strong>Messaging‑Hypothesen (Employer Story in 5 Sätzen)</strong>
+                <div class="muted">Was AGÁTA besonders macht – mit Beweisen statt Buzzwords.</div>
+              </div>
+            </div>
+            <div class="check">
+              <div class="dot" aria-hidden="true">✓</div>
+              <div>
+                <strong>Funnel‑Skizze (1 Rolle / 1 Standort)</strong>
+                <div class="muted">Touchpoints, CTA, Screening, Next‑Steps – simpel & machbar.</div>
+              </div>
+            </div>
+            <div class="check">
+              <div class="dot" aria-hidden="true">✓</div>
+              <div>
+                <strong>KPI‑Set + Pilot‑Empfehlung</strong>
+                <div class="muted">Was messen wir, ab wann ist es „gut“, wie lernen wir schnell?</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card section">
+          <span class="pill">Scope & KPIs</span>
+          <h3 style="margin-top: 16px">Wir halten es bewusst klein</h3>
+          <p class="muted" style="margin-top: 10px; line-height: 1.55">
+            Statt mehrere Baustellen zu öffnen, wählen wir eine priorisierte Rolle (oder einen Standort) und optimieren
+            sichtbar – in einem klaren Sprint.
+          </p>
+
+          <div class="kpi-grid" aria-label="Beispiel-KPIs">
+            <div class="kpi">
+              <div class="label">Tempo</div>
+              <div class="value">24–48h</div>
+              <div class="muted" style="margin-top: 8px">bis Erstkontakt (SLA)</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Qualität</div>
+              <div class="value">Fit‑Quote</div>
+              <div class="muted" style="margin-top: 8px">Screening statt Masse</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Verlässlichkeit</div>
+              <div class="value">Show‑Up</div>
+              <div class="muted" style="margin-top: 8px">Probearbeit / Interview</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Lernloop</div>
+              <div class="value">A/B</div>
+              <div class="muted" style="margin-top: 8px">Creatives + Messaging</div>
+            </div>
+          </div>
+
+          <div class="divider" role="separator" aria-hidden="true"></div>
+
+          <div class="metric">
+            <div class="tiny">Risikoarm</div>
+            <p class="muted" style="margin-top: 10px; line-height: 1.55">
+              Wenn der Pilot nach 2 Wochen nicht den gewünschten Trend zeigt, haben wir trotzdem klare Learnings:
+              Kanal‑Eignung, Messaging‑Fit, Prozess‑Bottlenecks – und die nächste Hypothese.
+            </p>
+          </div>
+        </article>
       </section>
 
       <section class="grid two" id="workshop" aria-label="Workshop">
@@ -1135,8 +1338,8 @@
             <button class="pill btn secondary" id="copySummaryBtn" type="button">Zusammenfassung kopieren</button>
           </div>
           <p class="muted" style="margin-top: 10px; line-height: 1.55">
-            Tipp im Gespräch: „Wenn wir in 2 Wochen herausfinden, welcher Hebel bei euch wirklich wirkt, ist das ein
-            gutes Investment – egal ob wir danach skalieren oder nicht.“
+            Tipp im Gespräch: „Wenn wir in 2 Wochen sehen, welcher Hebel bei euch wirklich wirkt, ist das ein gutes
+            Investment – egal ob wir danach skalieren oder nicht.“
           </p>
         </div>
 
@@ -1307,7 +1510,7 @@
 
       // Scroll-spy: highlight current section in nav (desktop + mobile)
       const spyLinks = $$('[data-spy]');
-      const sections = ["story", "workshop", "pain", "offer", "next"]
+      const sections = ["story", "outcomes", "workshop", "pain", "offer", "next"]
         .map((id) => document.getElementById(id))
         .filter(Boolean);
       const setActive = (id) => {
@@ -1327,7 +1530,7 @@
       if (copyBtn && navigator.clipboard) {
         copyBtn.addEventListener("click", async () => {
           const text =
-            "Recruit × AGÁTA – Vorschlag: 2‑wöchiger Audit/Sprint. Output: Pain Map, Messaging‑Hypothesen, Funnel‑Skizze, KPI‑Set, Pilot‑Empfehlung. Ziel: größten Recruiting‑Hebel priorisieren und risikoarm messen.";
+            "Recruit × AGÁTA – Vorschlag: 60–90 Min Workshop + 2‑wöchiger Pilot. Output: priorisierte Pain Map (Top‑1 Hebel), Messaging‑Hypothesen (Employer Story), Funnel‑Skizze (1 Rolle/Standort), KPI‑Set + Pilot‑Empfehlung. Ziel: größten Recruiting‑Hebel priorisieren und risikoarm messen.";
           try {
             await navigator.clipboard.writeText(text);
             copyBtn.textContent = "Kopiert ✓";
